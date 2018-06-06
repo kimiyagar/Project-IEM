@@ -2,14 +2,14 @@
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	include_once $_SERVER['DOCUMENT_ROOT'] . '/path.php';
 	include_once ROOT . 'parameter.php';
-	include_once MODULE_FUNCTION . 'QueryCheck.php';
+	include_once MODULE_CLASS . 'QueryCheck.php';
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	class DELETE
 	{
 		private $Set;
 		private $QueryCheck;
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		public function __cunstruct ($Connection)
+		public function __construct ($Connection)
 		{
 			$this->Set = $Connection;				
 			$this->QueryCheck = new QUERY_CHECK($Connection);
@@ -17,6 +17,7 @@
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		public function MakeSubWhereString($WhereArray , $TableName , $Clause)
 		{
+			$WhereString = NULL;
 			$WhereArray = json_decode($WhereArray, TRUE);
 			foreach ($WhereArray as $ColumnName) 
 			{
@@ -37,7 +38,7 @@
 //-----------------------------------------------------------------------------------------------------------------------------------
 			foreach ($WhereConditionsArray as $ColumnName) 
 			{
-				$WhereString .= $WhereConditionsArray[$ColumnName]
+				$WhereString .= $WhereConditionsArray[$ColumnName];
 			}
 			if($WhereString != NULL)
 			{
@@ -95,7 +96,6 @@
 						}
 					}
 				}
-			}
 //-----------------------------------------------------------------------------------------------------------------------------------
 			if($ColumnName_DESC != NULL)
 			{
