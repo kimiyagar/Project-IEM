@@ -2,14 +2,14 @@
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	include_once $_SERVER['DOCUMENT_ROOT'] . '/path.php';
 	include_once ROOT . 'parameter.php';
-	include_once MODULE_FUNCTION . 'QueryCheck.php';
+	include_once MODULE_CLASS . 'QueryCheck.php';
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	class INSERT
 	{
 		private $Set;
 		private $QueryCheck;
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		public function __cunstruct ($Connection)
+		public function __construct ($Connection)
 		{
 			$this->Set = $Connection;				
 			$this->QueryCheck = new QUERY_CHECK($Connection);
@@ -44,7 +44,7 @@
 			}
 			else
 			{
-				$Bind = ':'
+				$Bind = ':';
 			}
 			if($ColumnsArray != NULL)
 			{

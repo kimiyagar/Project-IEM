@@ -35,6 +35,7 @@
 				}
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------
+            $WhereString = NULL;
 			foreach ($WhereConditionsArray as $ColumnName) 
 			{
 				$WhereString .= $WhereConditionsArray[$ColumnName];
@@ -126,7 +127,7 @@
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		public function MakeAggregateFunctionString($TableName , $ColumnName , $FunctionName)
 		{
-			if($QueryCheck->IsColumnExist($TableName , $ColumnName))
+			if($this->QueryCheck->IsColumnExist($TableName , $ColumnName))
 			{
 				$FunctionName = strtoupper($FunctionName);
 				$AggregateFunctionString = $FunctionName . '(' . $ColumnName . ')';
@@ -169,7 +170,7 @@
 //-----------------------------------------------------------------------------------------------------------------------------------
 			if($WhereArray_AND != NULL)
 			{			
-				$WhereArray_AND = json_decode($WhereString_AND , TRUE);
+				$WhereArray_AND = json_decode($WhereArray_AND , TRUE);
 				foreach ($WhereArray_AND as $ColumnName) 
 				{
 					if($this->QueryCheck->IsColumnExist($TableName , $ColumnName))
@@ -258,6 +259,7 @@
 //-----------------------------------------------------------------------------------------------------------------------------------
 			if(isset($SetDataArray['AggregateFunctionArray']))
 			{
+				$AggregateFunctionString = NULL;
 				foreach ($SetDataArray['AggregateFunctionArray'] as $FunctionString) 
 				{
 					if(isset($FunctionString))

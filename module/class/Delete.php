@@ -131,7 +131,7 @@
 //-----------------------------------------------------------------------------------------------------------------------------------
 			if($WhereArray_AND != NULL)
 			{			
-				$WhereArray_AND = json_decode($WhereString_AND , TRUE);
+				$WhereArray_AND = json_decode($WhereArray_AND , TRUE);
 				foreach ($WhereArray_AND as $ColumnName) 
 				{
 					if($this->QueryCheck->IsColumnExist($TableName , $ColumnName))

@@ -16,7 +16,7 @@
 					$Username = DB_USERNAME;
 					$Password = DB_PASSWORD;
 					$Name = DB_NAME;
-					$DNS = "mysql:host={$Host . ':' . $Port};dbname={$Name}";
+					$DNS = "mysql:host=" . $Host . ":" . $Port . ";dbname={$Name}";
 					$this->Connection = new PDO($DNS , $Username , $Password);
 					$this->Connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 					$this->Connection->exec("SET NAMES utf8");	

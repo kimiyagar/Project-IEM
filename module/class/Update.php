@@ -2,14 +2,14 @@
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	include_once $_SERVER['DOCUMENT_ROOT'] . '/path.php';
 	include_once ROOT . 'parameter.php';
-	include_once MODULE_FUNCTION . 'QueryCheck.php';
+	include_once MODULE_CLASS . 'QueryCheck.php';
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	class UPDATE
 	{
 		private $Set;
 		private $QueryCheck;
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		public function __cunstruct ($Connection)
+		public function __construct ($Connection)
 		{
 			$this->Set = $Connection;				
 			$this->QueryCheck = new QUERY_CHECK($Connection);
@@ -35,9 +35,10 @@
 				}
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------
+			$WhereString = NULL;
 			foreach ($WhereConditionsArray as $ColumnName) 
 			{
-				$WhereString .= $WhereConditionsArray[$ColumnName]
+				$WhereString .= $WhereConditionsArray[$ColumnName];
 			}
 			if($WhereString != NULL)
 			{
@@ -95,7 +96,6 @@
 						}
 					}
 				}
-			}
 //-----------------------------------------------------------------------------------------------------------------------------------
 			if($ColumnName_DESC != NULL)
 			{
@@ -150,7 +150,7 @@
 //-----------------------------------------------------------------------------------------------------------------------------------
 			if($WhereArray_AND != NULL)
 			{			
-				$WhereArray_AND = json_decode($WhereString_AND , TRUE);
+				$WhereArray_AND = json_decode($WhereArray_AND , TRUE);
 				foreach ($WhereArray_AND as $ColumnName) 
 				{
 					if($this->QueryCheck->IsColumnExist($TableName , $ColumnName))
@@ -191,6 +191,7 @@
 		{
 			if($SetArray != NULL)
 			{
+				$SetString = NULL;
 				$SetArray = json_decode($SetArray , TRUE);
 				foreach ($SetArray as $ColumnName => $NewValue) 
 				{
