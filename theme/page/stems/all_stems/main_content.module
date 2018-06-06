@@ -1,0 +1,9 @@
+<div class="wm-main-content" id="stems-filter" style="background-color: #343434;">
+    <input class="chart_data" type="hidden" data-stGenreId = "" />
+    <div class="wm-main-section">
+        <div class="container">
+            <div class="row">
+            </div>
+        </div>     
+    </div>
+</div>
