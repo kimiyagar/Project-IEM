@@ -1,5 +1,5 @@
 <?php
-	define('DB_UDERNAME'				, 'phpmyadmin');
+	define('DB_USERNAME'				, 'phpmyadmin');
 	define('DB_PASSWORD'				, '0016157982/*-+');
 	define('DB_NAME'					, 'iem');
 	define('DB_HOST'					, 'localhost');
